@@ -182,11 +182,18 @@
   .portrait-card.groom,
   .portrait-card.bride {
     transform: none;
+    max-width: 400px;
+    margin: 0 auto;
   }
   
   .portrait-card.groom:hover,
   .portrait-card.bride:hover {
     transform: translateY(-10px);
+  }
+  
+  .portrait-center {
+    max-width: 500px;
+    margin: 0 auto;
   }
   
   .photo-grid {
