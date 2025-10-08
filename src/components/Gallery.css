@@ -7,7 +7,7 @@
   grid-template-columns: 1fr 2fr 1fr;
   gap: 2rem;
   margin-bottom: 4rem;
-  align-items: center;
+  align-items: stretch;
 }
 
 .portrait-card {
@@ -16,6 +16,7 @@
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0,0,0,0.15);
   transition: transform 0.3s;
+  height: 100%;
 }
 
 .portrait-card:hover {
@@ -63,6 +64,7 @@
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  height: 100%;
 }
 
 .portrait-center img {
@@ -175,25 +177,18 @@
 
 @media (max-width: 1024px) {
   .portrait-section {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 1rem;
   }
   
   .portrait-card.groom,
   .portrait-card.bride {
     transform: none;
-    max-width: 400px;
-    margin: 0 auto;
   }
   
   .portrait-card.groom:hover,
   .portrait-card.bride:hover {
     transform: translateY(-10px);
-  }
-  
-  .portrait-center {
-    max-width: 500px;
-    margin: 0 auto;
   }
   
   .photo-grid {
