@@ -4,7 +4,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/src/assets/pwed250713_0227.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/images/pwed250713_0227.jpg');
   background-size: cover;
   background-position: center 30%;
   background-repeat: no-repeat;

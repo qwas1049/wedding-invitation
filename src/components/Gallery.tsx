@@ -75,7 +75,7 @@ const Gallery = () => {
     
     allPhotos.forEach(photo => {
       const img = new Image();
-      img.src = `/src/assets/${photo}`;
+      img.src = `/images/${photo}`;
     });
   }, []);
 
@@ -94,14 +94,14 @@ const Gallery = () => {
         
         <div className="portrait-section">
           <div className="portrait-card groom">
-            <img src={`/src/assets/${groomPhoto}`} alt="新郎" />
+            <img src={`/images/${groomPhoto}`} alt="新郎" />
             <div className="portrait-name">俊翔</div>
           </div>
           <div className="portrait-center">
-            <img src={`/src/assets/${heroPhoto}`} alt="我們" />
+            <img src={`/images/${heroPhoto}`} alt="我們" />
           </div>
           <div className="portrait-card bride">
-            <img src={`/src/assets/${bridePhoto}`} alt="新娘" />
+            <img src={`/images/${bridePhoto}`} alt="新娘" />
             <div className="portrait-name">德姿</div>
           </div>
         </div>
@@ -118,7 +118,7 @@ const Gallery = () => {
                 <div className="photo-grid">
                   {group.photos.map((photo, index) => (
                     <div key={index} className="photo-item">
-                      <img src={`/src/assets/${photo}`} alt={`婚紗照 ${index + 1}`} loading="lazy" />
+                      <img src={`/images/${photo}`} alt={`婚紗照 ${index + 1}`} loading="lazy" />
                     </div>
                   ))}
                 </div>
