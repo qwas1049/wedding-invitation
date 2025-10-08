@@ -1,0 +1,73 @@
+.thank-you {
+  background: linear-gradient(135deg, #d4a574, #8b7355);
+  color: #fff;
+  padding: 80px 0;
+}
+
+.thank-you-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.thank-you-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  letter-spacing: 4px;
+  font-weight: 300;
+}
+
+.thank-you-content p {
+  font-size: 1.2rem;
+  line-height: 2;
+  margin-bottom: 1rem;
+  opacity: 0.95;
+}
+
+.signature {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.3);
+}
+
+.signature p {
+  font-size: 1.3rem;
+  letter-spacing: 3px;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .thank-you {
+    padding: 60px 0;
+  }
+  
+  .thank-you-content h2 {
+    font-size: 2rem;
+  }
+  
+  .thank-you-content p {
+    font-size: 1.1rem;
+  }
+  
+  .signature p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .thank-you {
+    padding: 50px 0;
+  }
+  
+  .thank-you-content h2 {
+    font-size: 1.8rem;
+  }
+  
+  .thank-you-content p {
+    font-size: 1rem;
+  }
+  
+  .signature p {
+    font-size: 1.1rem;
+  }
+}

@@ -4,6 +4,7 @@ import WeddingInfo from './components/WeddingInfo';
 import Schedule from './components/Schedule';
 import Gallery from './components/Gallery';
 import Travel from './components/Travel';
+import ThankYou from './components/ThankYou';
 import './App.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Schedule />
       <Gallery />
       <Travel />
+      <ThankYou />
     </div>
   );
 }
