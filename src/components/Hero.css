@@ -1,0 +1,122 @@
+.hero {
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/src/assets/pwed250713_0227.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  text-align: center;
+  padding: 20px;
+  padding-bottom: 30px;
+}
+
+.hero-content {
+  color: #fff;
+  font-family: 'Noto Serif TC', serif;
+  transform: translateX(-2px);
+}
+
+.couple-names {
+  font-size: 3rem;
+  font-weight: 400;
+  margin-bottom: 0.8rem;
+  text-shadow: 3px 3px 8px rgba(0,0,0,0.6);
+  letter-spacing: 1px;
+}
+
+.wedding-date {
+  font-size: 1.6rem;
+  margin-bottom: 0.4rem;
+  letter-spacing: 4px;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+  font-weight: 400;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  opacity: 0.95;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+  font-weight: 300;
+  letter-spacing: 3px;
+}
+
+.countdown {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255,255,255,0.2);
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.countdown-value {
+  font-size: 2.2rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.countdown-label {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+@media (max-width: 768px) {
+  .couple-names {
+    font-size: 3rem;
+    letter-spacing: 6px;
+  }
+  .wedding-date {
+    font-size: 1.2rem;
+  }
+  .subtitle {
+    font-size: 1.1rem;
+  }
+  .countdown {
+    gap: 1rem;
+  }
+  .countdown-item {
+    padding: 1rem 1.5rem;
+  }
+  .countdown-value {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .couple-names {
+    font-size: 2.2rem;
+    letter-spacing: 4px;
+  }
+  .wedding-date {
+    font-size: 1rem;
+    letter-spacing: 3px;
+  }
+  .subtitle {
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+  }
+  .countdown {
+    gap: 0.5rem;
+  }
+  .countdown-item {
+    padding: 0.8rem 1rem;
+  }
+  .countdown-value {
+    font-size: 1.5rem;
+  }
+}

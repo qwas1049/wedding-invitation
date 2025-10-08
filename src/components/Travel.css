@@ -1,0 +1,111 @@
+.travel {
+  background-color: #fff;
+}
+
+.travel-section {
+  margin-bottom: 3rem;
+}
+
+.travel-section h3 {
+  color: #8b7355;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.transport-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.transport-item {
+  background: #f9f7f4;
+  padding: 2rem;
+  border-radius: 10px;
+  border-left: 4px solid #d4a574;
+}
+
+.transport-item.shuttle {
+  grid-column: 1 / -1;
+}
+
+.transport-item h4 {
+  color: #8b7355;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.transport-item p {
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 0.5rem;
+}
+
+.shuttle-note {
+  font-weight: bold;
+  color: #8b7355;
+  margin-bottom: 1.5rem;
+}
+
+.shuttle-schedule {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.shuttle-route {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 3px solid #d4a574;
+}
+
+.shuttle-route.return {
+  border-left-color: #8b7355;
+}
+
+.shuttle-route .time {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #d4574e;
+  margin-bottom: 0.8rem;
+}
+
+.shuttle-route .location {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #8b7355;
+  margin-bottom: 0.5rem;
+}
+
+.shuttle-route .address {
+  font-size: 0.95rem;
+  color: #888;
+  margin-bottom: 0.3rem;
+}
+
+.shuttle-route a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #d4a574;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.shuttle-route a:hover {
+  color: #8b7355;
+}
+
+@media (max-width: 768px) {
+  .transport-info {
+    grid-template-columns: 1fr;
+  }
+  
+  .transport-item {
+    padding: 1.5rem;
+  }
+  
+  .shuttle-route {
+    padding: 1.2rem;
+  }
+}
