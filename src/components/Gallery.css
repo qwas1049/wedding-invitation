@@ -221,4 +221,7 @@
   .photo-grid {
     grid-template-columns: 1fr;
   }
+  .photo-item img {
+    height: 280px;
+  }
 }
