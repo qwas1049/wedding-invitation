@@ -65,33 +65,30 @@ const Gallery = () => {
   const bridePhotoFile = 'pwed250713_0433.jpg';
   const heroPhotoFile = 'pwed250713_0447.jpg';
 
-  // 將檔名轉為 Vite dev 可用 URL
+  // 轉成 Vite dev 可用 URL
   const groomPhoto = new URL(`../assets/${groomPhotoFile}`, import.meta.url).href;
   const bridePhoto = new URL(`../assets/${bridePhotoFile}`, import.meta.url).href;
   const heroPhoto = new URL(`../assets/${heroPhotoFile}`, import.meta.url).href;
 
-  // 將每個 photoGroups 的 photos 也換成 URL
+  // shuffle 並生成 URL
   const photoGroups = useMemo(() => {
-    return photoGroupsData.map(group => ({
-      title: group.title,
-      photos: group.photos.map(file => new URL(`../assets/${file}`, import.meta.url).href)
-    })).sort(() => Math.random() - 0.5); // shuffle group
+    return photoGroupsData
+      .map(group => ({
+        title: group.title,
+        photos: group.photos.map(file => new URL(`../assets/${file}`, import.meta.url).href)
+      }))
+      .sort(() => Math.random() - 0.5);
   }, []);
 
-  // 預先載入所有圖片
+  // 預載下一組圖片，避免切換閃白
   useEffect(() => {
-    const allPhotos = [
-      groomPhoto,
-      bridePhoto,
-      heroPhoto,
-      ...photoGroups.flatMap(group => group.photos)
-    ];
-
-    allPhotos.forEach(photo => {
+    const nextGroupIndex = (currentSlide + 1) % photoGroups.length;
+    const nextGroup = photoGroups[nextGroupIndex];
+    nextGroup.photos.forEach(photo => {
       const img = new Image();
       img.src = photo;
     });
-  }, [photoGroups, groomPhoto, bridePhoto, heroPhoto]);
+  }, [currentSlide, photoGroups]);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % photoGroups.length);
@@ -130,13 +127,11 @@ const Gallery = () => {
               >
                 <h3 className="carousel-title">{group.title}</h3>
                 <div className="photo-grid">
-                  {group.photos.map((photo, index) => {
-                    return (
-                      <div key={index} className={`photo-item ${photo.endsWith('1411.jpg') ? 'lastImg' : ''}`}>
-                        <img src={photo} alt={`婚紗照 ${index + 1}`} loading="lazy" />
-                      </div>
-                    )
-                  })}
+                  {group.photos.map((photo, index) => (
+                    <div key={index} className={`photo-item ${photo.endsWith('1411.jpg') ? 'lastImg' : ''}`}>
+                      <img src={photo} alt={`婚紗照 ${index + 1}`} loading="lazy" />
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}
