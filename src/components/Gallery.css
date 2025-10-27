@@ -218,6 +218,11 @@
 }
 
 @media (max-width: 480px) {
+  .carousel-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 1.2rem;
+  }
   .photo-grid {
     grid-template-columns: 1fr;
   }
