@@ -6,7 +6,6 @@ const Schedule = () => {
     { time: '11:00', title: '戶外證婚', description: '新人進場、交換誓詞' },
     { time: '11:40', title: '迎賓活動', description: '完成闖關活動，獲得婚禮小物' },
     { time: '12:00', title: '午宴開始', description: '享用美食佳餚' },
-    { time: '13:00', title: '敬酒時間', description: '新人向賓客敬酒' },
   ];
 
   return (

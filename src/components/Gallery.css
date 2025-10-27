@@ -225,3 +225,22 @@
     height: 280px;
   }
 }
+
+@media (max-width: 330px) {
+  .photo-item img {
+    height: 250px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .lastImg img {
+    height: 390px;
+  }
+}
+
+@media (max-width: 400px) {
+   .lastImg img {
+    height: 320px;
+  }
+}

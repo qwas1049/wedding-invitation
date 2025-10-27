@@ -72,7 +72,7 @@ const Gallery = () => {
       heroPhoto,
       ...photoGroups.flatMap(group => group.photos)
     ];
-    
+
     allPhotos.forEach(photo => {
       const img = new Image();
       img.src = `/images/${photo}`;
@@ -91,7 +91,7 @@ const Gallery = () => {
     <section className="gallery">
       <div className="container">
         <h2 className="section-title">婚紗寫真</h2>
-        
+
         <div className="portrait-section">
           <div className="portrait-card groom">
             <img src={`/images/${groomPhoto}`} alt="新郎" />
@@ -110,17 +110,24 @@ const Gallery = () => {
           <button className="carousel-btn prev" onClick={prevSlide}>‹</button>
           <div className="carousel-wrapper">
             {photoGroups.map((group, groupIndex) => (
-              <div 
-                key={groupIndex} 
+              <div
+                key={groupIndex}
                 className={`carousel-slide ${groupIndex === currentSlide ? 'active' : ''}`}
               >
                 <h3 className="carousel-title">{group.title}</h3>
                 <div className="photo-grid">
-                  {group.photos.map((photo, index) => (
-                    <div key={index} className="photo-item">
-                      <img src={`/images/${photo}`} alt={`婚紗照 ${index + 1}`} loading="lazy" />
-                    </div>
-                  ))}
+                  {group.photos.map((photo, index) => {
+                    let isLastGroup =  groupIndex === photoGroups.length - 1;
+                    let isLast = index === group.photos.length - 1;
+
+                    return (
+                      <div key={index} className={`photo-item ${isLastGroup && isLast ? 'lastImg':''}`}>
+                        <img src={`/images/${photo}`} alt={`婚紗照 ${index + 1}`} loading="lazy" 
+                        // style={isLast && isLastGroup ? { minHeight: '320px' } : {}} 
+                        />
+                      </div>
+                    )
+                  })}
                 </div>
               </div>
             ))}
