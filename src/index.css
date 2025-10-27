@@ -6,6 +6,9 @@
 
 html {
   scroll-behavior: smooth;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -14,6 +17,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   background-color: #f9f7f4;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root, .app{
+  height: 100%;
 }
 
 /* 響應式字體 */
