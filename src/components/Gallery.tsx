@@ -1,9 +1,10 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import './Gallery.css';
 
 const Gallery = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  // 所有照片檔名（放在 public/images）
   const photoGroupsData = [
     {
       title: '真愛桃花源（一）',
@@ -61,34 +62,14 @@ const Gallery = () => {
     }
   ];
 
-  const groomPhotoFile = 'pwed250713_0245.jpg';
-  const bridePhotoFile = 'pwed250713_0433.jpg';
-  const heroPhotoFile = 'pwed250713_0447.jpg';
+  const groomPhoto = 'pwed250713_0245.jpg';
+  const bridePhoto = 'pwed250713_0433.jpg';
+  const heroPhoto = 'pwed250713_0447.jpg';
 
-  // 轉成 Vite dev 可用 URL
-  const groomPhoto = new URL(`../assets/${groomPhotoFile}`, import.meta.url).href;
-  const bridePhoto = new URL(`../assets/${bridePhotoFile}`, import.meta.url).href;
-  const heroPhoto = new URL(`../assets/${heroPhotoFile}`, import.meta.url).href;
-
-  // shuffle 並生成 URL
+  // 隨機排序
   const photoGroups = useMemo(() => {
-    return photoGroupsData
-      .map(group => ({
-        title: group.title,
-        photos: group.photos.map(file => new URL(`../assets/${file}`, import.meta.url).href)
-      }))
-      .sort(() => Math.random() - 0.5);
+    return [...photoGroupsData].sort(() => Math.random() - 0.5);
   }, []);
-
-  // 預載下一組圖片，避免切換閃白
-  useEffect(() => {
-    const nextGroupIndex = (currentSlide + 1) % photoGroups.length;
-    const nextGroup = photoGroups[nextGroupIndex];
-    nextGroup.photos.forEach(photo => {
-      const img = new Image();
-      img.src = photo;
-    });
-  }, [currentSlide, photoGroups]);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % photoGroups.length);
@@ -105,14 +86,14 @@ const Gallery = () => {
 
         <div className="portrait-section">
           <div className="portrait-card groom">
-            <img src={groomPhoto} alt="新郎" />
+            <img src={`/images/${groomPhoto}`} alt="新郎" />
             <div className="portrait-name">俊翔</div>
           </div>
           <div className="portrait-center">
-            <img src={heroPhoto} alt="我們" />
+            <img src={`/images/${heroPhoto}`} alt="我們" />
           </div>
           <div className="portrait-card bride">
-            <img src={bridePhoto} alt="新娘" />
+            <img src={`/images/${bridePhoto}`} alt="新娘" />
             <div className="portrait-name">德姿</div>
           </div>
         </div>
@@ -128,8 +109,11 @@ const Gallery = () => {
                 <h3 className="carousel-title">{group.title}</h3>
                 <div className="photo-grid">
                   {group.photos.map((photo, index) => (
-                    <div key={index} className={`photo-item ${photo.endsWith('1411.jpg') ? 'lastImg' : ''}`}>
-                      <img src={photo} alt={`婚紗照 ${index + 1}`} loading="lazy" />
+                    <div
+                      key={index}
+                      className={`photo-item ${photo === 'pwed250713_1411.jpg' ? 'lastImg' : ''}`}
+                    >
+                      <img src={`/images/${photo}`} alt={`婚紗照 ${index + 1}`} loading="lazy" />
                     </div>
                   ))}
                 </div>
