@@ -1,11 +1,9 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import './Gallery.css';
 
 const Gallery = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
 
-  // 所有照片檔名
   const photoGroupsData = [
     {
       title: '真愛桃花源（一）',
