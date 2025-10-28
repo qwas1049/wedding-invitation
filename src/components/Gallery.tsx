@@ -67,15 +67,6 @@ const Gallery = () => {
   const bridePhoto = 'pwed250713_0433.jpg';
   const heroPhoto = 'pwed250713_0447.jpg';
 
-  // 判斷是否為手機
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // 隨機排序並加上桌機/手機資料夾路徑
   const photoGroups = useMemo(() => {
     return [...photoGroupsData]
       .sort(() => Math.random() - 0.5)
@@ -83,7 +74,7 @@ const Gallery = () => {
         title: group.title,
         photos: group.photos.map(file => `/images/${file}`)
       }));
-  }, [isMobile]);
+  }, []);
 
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % photoGroups.length);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + photoGroups.length) % photoGroups.length);

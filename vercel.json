@@ -3,7 +3,7 @@
       {
         "src": "/images/(.*)",
         "headers": {
-          "cache-control": "public, max-age=0, s-maxage=0, stale-while-revalidate=0"
+          "cache-control": "public, max-age=0, s-maxage=86400, stale-while-revalidate=86400"
         },
         "dest": "/images/$1"
       }
