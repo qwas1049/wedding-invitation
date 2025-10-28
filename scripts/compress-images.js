@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import sharp from 'sharp';
 
-const inputDir = path.resolve('public/images');
+const inputDir = path.resolve('public/images/original');
 const desktopDir = path.resolve('public/images/desktop');
 const mobileDir = path.resolve('public/images/mobile');
 
@@ -24,13 +24,13 @@ async function compress() {
     // 桌機版 1920px
     await sharp(inputPath)
       .resize({ width: 1920 })
-      .jpeg({ quality: 75 })
+      .jpeg({ quality: 90 })
       .toFile(path.join(desktopDir, file));
 
     // 手機版 800px
     await sharp(inputPath)
       .resize({ width: 800 })
-      .jpeg({ quality: 75 })
+      .jpeg({ quality: 90 })
       .toFile(path.join(mobileDir, file));
 
     console.log(`✅ 已處理 ${file}`);
