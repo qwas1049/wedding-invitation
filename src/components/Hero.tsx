@@ -21,16 +21,15 @@ const Hero = () => {
 
   const mobileHeroImages = [
     'pwed250713_0350.jpg',
-    'pwed250713_0774.jpg',
     'pwed250713_0807.jpg',
-    'pwed250713_0830.jpg',
-    'pwed250713_0934.jpg',
+    'pwed250713_0350.jpg',
   ];
 
   const desktopHeroImages = [
     'pwed250713_0227.jpg',
     'pwed250713_0321.jpg',
     'pwed250713_0547.jpg',
+    'pwed250713_0227.jpg',
   ];
 
   useEffect(() => {
@@ -43,7 +42,7 @@ const Hero = () => {
   useEffect(() => {
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
     const heroArray = isMobile ? mobileHeroImages : desktopHeroImages;
-    const heroPaths = heroArray.map(file => `/images/${isMobile ? 'desktop' : 'desktop'}/${file}`);
+    const heroPaths = heroArray.map(file => `/images/${file}`);
     const randomHero = heroPaths[Math.floor(Math.random() * heroPaths.length)];
     setHeroBg(randomHero);
   }, []);

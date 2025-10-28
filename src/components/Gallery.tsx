@@ -77,22 +77,20 @@ const Gallery = () => {
 
   // 隨機排序並加上桌機/手機資料夾路徑
   const photoGroups = useMemo(() => {
-    const folder = isMobile ? 'mobile' : 'desktop';
     return [...photoGroupsData]
       .sort(() => Math.random() - 0.5)
       .map(group => ({
         title: group.title,
-        photos: group.photos.map(file => `/images/${folder}/${file}`)
+        photos: group.photos.map(file => `/images/${file}`)
       }));
   }, [isMobile]);
 
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % photoGroups.length);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + photoGroups.length) % photoGroups.length);
 
-  const folder = isMobile ? 'mobile' : 'desktop';
-  const groomPath = `/images/${folder}/${groomPhoto}`;
-  const bridePath = `/images/${folder}/${bridePhoto}`;
-  const heroPath = `/images/${folder}/${heroPhoto}`;
+  const groomPath = `/images/${groomPhoto}`;
+  const bridePath = `/images/${bridePhoto}`;
+  const heroPath = `/images/${heroPhoto}`;
 
   return (
     <section className="gallery">

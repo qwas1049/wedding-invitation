@@ -4,13 +4,10 @@ import path from 'path';
 import sharp from 'sharp';
 
 const inputDir = path.resolve('public/images/original');
-const desktopDir = path.resolve('public/images/desktop');
-const mobileDir = path.resolve('public/images/mobile');
+const outputDir = path.resolve('public/images');
 
 // 建立輸出資料夾
-[desktopDir, mobileDir].forEach(dir => {
-  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-});
+if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
 
 // 讀取所有 jpg/jpeg/png
 const files = fs.readdirSync(inputDir).filter(f =>
@@ -21,17 +18,10 @@ async function compress() {
   for (const file of files) {
     const inputPath = path.join(inputDir, file);
 
-    // 桌機版 1920px
     await sharp(inputPath)
       .resize({ width: 1920 })
       .jpeg({ quality: 90 })
-      .toFile(path.join(desktopDir, file));
-
-    // 手機版 800px
-    await sharp(inputPath)
-      .resize({ width: 800 })
-      .jpeg({ quality: 90 })
-      .toFile(path.join(mobileDir, file));
+      .toFile(path.join(outputDir, file));
 
     console.log(`✅ 已處理 ${file}`);
   }
