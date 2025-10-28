@@ -43,7 +43,7 @@ const Hero = () => {
   useEffect(() => {
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
     const heroArray = isMobile ? mobileHeroImages : desktopHeroImages;
-    const heroPaths = heroArray.map(file => `/images/${isMobile ? 'mobile' : 'desktop'}/${file}`);
+    const heroPaths = heroArray.map(file => `/images/${isMobile ? 'desktop' : 'desktop'}/${file}`);
     const randomHero = heroPaths[Math.floor(Math.random() * heroPaths.length)];
     setHeroBg(randomHero);
   }, []);
