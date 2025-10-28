@@ -43,13 +43,14 @@ const Hero = () => {
   useEffect(() => {
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
     const heroArray = isMobile ? mobileHeroImages : desktopHeroImages;
-    const randomHero = heroArray[Math.floor(Math.random() * heroArray.length)];
+    const heroPaths = heroArray.map(file => `/images/${isMobile ? 'mobile' : 'desktop'}/${file}`);
+    const randomHero = heroPaths[Math.floor(Math.random() * heroPaths.length)];
     setHeroBg(randomHero);
   }, []);
 
   return (
     <section className="hero" style={{
-      backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/images/${heroBg}')`
+      backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('${heroBg}')`
     }}>
       <div className="hero-content">
         <h1 className="couple-names">德姿 & 俊翔</h1>

@@ -1,10 +1,11 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import './Gallery.css';
 
 const Gallery = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // 所有照片檔名（放在 public/images）
+  // 所有照片檔名
   const photoGroupsData = [
     {
       title: '真愛桃花源（一）',
@@ -66,18 +67,32 @@ const Gallery = () => {
   const bridePhoto = 'pwed250713_0433.jpg';
   const heroPhoto = 'pwed250713_0447.jpg';
 
-  // 隨機排序
-  const photoGroups = useMemo(() => {
-    return [...photoGroupsData].sort(() => Math.random() - 0.5);
+  // 判斷是否為手機
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % photoGroups.length);
-  };
+  // 隨機排序並加上桌機/手機資料夾路徑
+  const photoGroups = useMemo(() => {
+    const folder = isMobile ? 'mobile' : 'desktop';
+    return [...photoGroupsData]
+      .sort(() => Math.random() - 0.5)
+      .map(group => ({
+        title: group.title,
+        photos: group.photos.map(file => `/images/${folder}/${file}`)
+      }));
+  }, [isMobile]);
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + photoGroups.length) % photoGroups.length);
-  };
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % photoGroups.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + photoGroups.length) % photoGroups.length);
+
+  const folder = isMobile ? 'mobile' : 'desktop';
+  const groomPath = `/images/${folder}/${groomPhoto}`;
+  const bridePath = `/images/${folder}/${bridePhoto}`;
+  const heroPath = `/images/${folder}/${heroPhoto}`;
 
   return (
     <section className="gallery">
@@ -86,14 +101,14 @@ const Gallery = () => {
 
         <div className="portrait-section">
           <div className="portrait-card groom">
-            <img src={`/images/${groomPhoto}`} alt="新郎" />
+            <img src={groomPath} alt="新郎" />
             <div className="portrait-name">俊翔</div>
           </div>
           <div className="portrait-center">
-            <img src={`/images/${heroPhoto}`} alt="我們" />
+            <img src={heroPath} alt="我們" />
           </div>
           <div className="portrait-card bride">
-            <img src={`/images/${bridePhoto}`} alt="新娘" />
+            <img src={bridePath} alt="新娘" />
             <div className="portrait-name">德姿</div>
           </div>
         </div>
@@ -111,9 +126,9 @@ const Gallery = () => {
                   {group.photos.map((photo, index) => (
                     <div
                       key={index}
-                      className={`photo-item ${photo === 'pwed250713_1411.jpg' ? 'lastImg' : ''}`}
+                      className={`photo-item ${photo.endsWith('1411.jpg') ? 'lastImg' : ''}`}
                     >
-                      <img src={`/images/${photo}`} alt={`婚紗照 ${index + 1}`} loading="lazy" />
+                      <img src={photo} alt={`婚紗照 ${index + 1}`} loading="lazy" />
                     </div>
                   ))}
                 </div>
