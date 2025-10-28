@@ -49,7 +49,8 @@ const Hero = () => {
 
   return (
     <section className="hero" style={{
-      backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('${heroBg}')`
+      backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('${heroBg}')`,
+      backgroundPosition: heroBg.endsWith('0807.jpg') ? '56% 30%' : 'center 30%'
     }}>
       <div className="hero-content">
         <h1 className="couple-names">德姿 & 俊翔</h1>
